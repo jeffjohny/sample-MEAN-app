@@ -1,0 +1,35 @@
+<main>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <ul class="panel-list">
+          <li *ngFor="let courseSet of courses | keyvalue">
+            <h1 class="title-date">{{ courseSet.key | date : 'EE, LLLL dd, yyyy' }}</h1>
+            <ul class="panel-list">
+              <li *ngFor="let course of courseSet.value" class="course-item">
+                <div class="row">
+                  <div class="col-lg-1">
+                    <img src="{{course.subjectPhotoUrl}}" class="sub-img" alt="Logo of course" width="45" height="45"/>
+                  </div>
+                  <div class="col-lg-6">
+                    <h2>{{course.title}}</h2>
+                    <p>{{course.description}}</p>
+                  </div>
+                  <div class="col-lg-3">
+                      <img src="{{course.instructorPhotoUrl}}" class="inst-img" alt="Image of instructor" width="35" height="35"/>
+                      <span class="inst-name">{{ course.instructorName s}}</span>
+                  </div>
+                  <div class="col-lg-2 time-span">
+                    <span>{{course.time | date :'h:mm aa'}} - {{getFinalHour(course.time) | date :'h:mm aa'}} EDT</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</main>

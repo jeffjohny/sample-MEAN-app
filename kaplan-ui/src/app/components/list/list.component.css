@@ -1,0 +1,34 @@
+main{
+    font-family: Open Sans, sans-serif !important;
+    background-color: #f9f5f5;
+}
+.panel-list li {
+    list-style-type: none;
+}   
+.course-item {
+    background-color: white;
+    padding: 20px;
+    border: #f9f0f0 2px solid;
+}
+.title-date {
+    padding-left: 40px;
+    font-size: 20px;
+}
+img.sub-img {
+    margin: 0px 0px 0px 10px;
+}
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+.inst-img {
+    border-radius: 50%;
+}
+.inst-name{
+    margin-left: 20px;
+    
+}
+.inst-nam, .time-span, .title-date, .inst-name {
+    font-weight: bold;
+}
