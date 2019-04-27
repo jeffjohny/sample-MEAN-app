@@ -1,18 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { CourseService } from '../../course.service';
-import { Course } from '../../course.model';
-import { groupBy } from 'lodash';
+import { Component, OnInit } from "@angular/core";
+import { CourseService } from "../../course.service";
+import { Course } from "../../course.model";
+import { groupBy } from "lodash";
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: "app-list",
+  templateUrl: "./list.component.html",
+  styleUrls: ["./list.component.css"]
 })
 export class ListComponent implements OnInit {
+  public courses: {};
 
-  courses: Map<number, Course[]>;
-  
-  constructor(private courseService: CourseService) { }
+  constructor(private courseService: CourseService) {}
 
   getFinalHour(date: Date) {
     let d = new Date(date);
@@ -20,9 +19,10 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.courseService.getCourses().subscribe((course) => {
-      this.courses = groupBy(course, function(item) { return new Date(item.time).setHours(0,0,0,0); })
-    })
+    this.courseService.getCourses().subscribe((course: Course) => {
+      this.courses = groupBy(course, function(item) {
+        return new Date(item["time"]).setHours(0, 0, 0, 0);
+      });
+    });
   }
-
 }
