@@ -1,15 +1,15 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import Course from './models/courses';
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import Course from "./models/courses";
 
 const app = express();
 const router = express.Router();
 
 app.use(cors());
 app.use(bodyParser.json());
-
+/* Start: comment these line for getting result without mongodb */
 mongoose.connect('mongodb://127.0.0.1:27017/coursedb');
 
 const connnection = mongoose.connection;
@@ -18,17 +18,118 @@ connnection.once('open', () => {
     console.log('MongogDB database connection estalished successfully!')
 });
 
-router.route('/courses').get((req, res) => {
-    Course.find((err, courses) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            res.json(courses);
-        }
-    })
-})
+/* End: comment these line for getting result without mongodb */
 
-app.use('/', router)
+router.route("/courses").get((req, res) => {
 
-app.listen(4001, () => console.log('express server is running on port 4001'))
+/* Start: comment these line for getting result without mongodb */
+  Course.find((err, courses) => {
+      if (err) {
+          console.log(err);
+      }
+      else {
+          res.json(courses);
+      }
+  })
+
+/* End: comment these line for getting result without mongodb */
+
+/* Start: comment these line for getting result with mongodb */
+//   res.json(
+//     [{
+//       title: "Nulla convallis dolor quis erat.",
+//       description:
+//         "Sed hendrerit luctus finibus. Sed justo dui, vulputate ac suscipit condimentum, porttitor sed dolor. Ut eu justo at metus dapibus facilisis a quis libero. Integer lectus turpis, pretium a tincidunt.",
+//       instructorName: "Erat Libero",
+//       instructorPhotoUrl:
+//         "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
+//       subjectPhotoUrl:
+//         "//kaptest.cdn.prismic.io/kaptest%2F251df7ae-64a7-474b-9e02-95166a5f2646_hsg.svg",
+//       time: "2016-01-03 22:00:00"
+//     },
+//     {
+//       title: "Pellentesque sagittis porttitor tincidunt. Sed.",
+//       description:
+//         "Curabitur eu velit vitae massa varius rhoncus. Proin eu ligula venenatis, consequat libero maximus, varius lorem. Morbi a dignissim nibh. Suspendisse eget ornare nunc, sollicitudin lacinia elit. Sed in volutpat.",
+//       instructorName: "Scelerisque Via",
+//       instructorPhotoUrl:
+//         "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
+//       subjectPhotoUrl:
+//         "//kaptest.cdn.prismic.io/kaptest%2F251df7ae-64a7-474b-9e02-95166a5f2646_hsg.svg",
+//       time: "2016-01-01 21:00:00"
+//     },
+//     {
+//       title: "Phasellus a interdum purus, non.",
+//       description:
+//         "Pellentesque bibendum, nulla tincidunt consequat rutrum, sem lacus mattis quam, cursus semper lectus nibh id diam. Duis ullamcorper, odio ac blandit pretium, purus est varius ante, eu aliquam elit tortor.",
+//       instructorName: "Cras Ac",
+//       instructorPhotoUrl:
+//         "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
+//       subjectPhotoUrl:
+//         "//kaptest.cdn.prismic.io/kaptest%2F251df7ae-64a7-474b-9e02-95166a5f2646_hsg.svg",
+//       time: "2016-01-04 21:00:00"
+//     },
+//     {
+//       title: "Donec viverra, magna ut porttitor",
+//       description:
+//         "Maecenas finibus ullamcorper aliquam. Integer eros neque, placerat id convallis non, rutrum tempor nisi. In venenatis vulputate feugiat. Vivamus porttitor, odio sit amet volutpat maximus, magna est maximus sapien, et.",
+//       instructorName: "Posuere Una",
+//       instructorPhotoUrl:
+//         "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
+//       subjectPhotoUrl:
+//         "//kaptest.cdn.prismic.io/kaptest%2F251df7ae-64a7-474b-9e02-95166a5f2646_hsg.svg",
+//       time: "2016-01-03 20:00:00"
+//     },
+//     {
+//       title: "In quis elit ut ipsum.",
+//       description:
+//         "Praesent fermentum tortor non arcu imperdiet, egestas vestibulum augue tempus. Nunc sollicitudin tincidunt metus placerat luctus. Praesent at finibus nibh. Donec auctor feugiat hendrerit. Nulla massa augue, mattis quis fermentum.",
+//       instructorName: "Aliquam Nisl",
+//       instructorPhotoUrl:
+//         "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
+//       subjectPhotoUrl:
+//         "//kaptest.cdn.prismic.io/kaptest%2F251df7ae-64a7-474b-9e02-95166a5f2646_hsg.svg",
+//       time: "2016-01-05 19:00:00"
+//     },
+//     {
+//       title: "Ut consequat risus id lacus.",
+//       description:
+//         "Nunc hendrerit blandit elit sed rhoncus. Sed interdum tempus enim vel ornare. Nulla facilisi. Morbi rhoncus turpis in justo sollicitudin, sit amet varius magna fringilla. Fusce porta magna neque, nec.",
+//       instructorName: "Vestibulum Ante",
+//       instructorPhotoUrl:
+//         "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
+//       subjectPhotoUrl:
+//         "//kaptest.cdn.prismic.io/kaptest%2F251df7ae-64a7-474b-9e02-95166a5f2646_hsg.svg",
+//       time: "2016-01-05 22:00:00"
+//     },
+//     {
+//       title: "Sed mauris dui, ornare ut.",
+//       description:
+//         "Vivamus pulvinar, nisl fermentum cursus tincidunt, tortor justo dignissim metus, consectetur facilisis nulla tellus ut nisi. Cras in lorem neque. Vivamus sed odio in libero finibus consequat. Maecenas facilisis nisi.",
+//       instructorName: "Integer Laciana",
+//       instructorPhotoUrl:
+//         "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
+//       subjectPhotoUrl:
+//         "//kaptest.cdn.prismic.io/kaptest%2F251df7ae-64a7-474b-9e02-95166a5f2646_hsg.svg",
+//       time: "2016-01-01 20:00:00"
+//     },
+//     {
+//       title: "In hac habitasse platea dictumst.",
+//       description:
+//         "Suspendisse consequat egestas posuere. Integer diam diam, gravida ac condimentum a, vulputate et quam. Fusce eleifend leo sed diam cursus, nec ultrices orci luctus. Vivamus eget eros aliquam, suscipit sapien.",
+//       instructorName: "Ipsum Primis",
+//       instructorPhotoUrl:
+//         "https://content-static.upwork.com/uploads/2014/10/01073427/profilephoto1.jpg",
+//       subjectPhotoUrl:
+//         "//kaptest.cdn.prismic.io/kaptest%2F251df7ae-64a7-474b-9e02-95166a5f2646_hsg.svg",
+//       time: "2016-01-03 21:00:00"
+//     }
+//   ]);
+
+/* End: comment these line for getting result with mongodb */
+
+});
+
+app.use("/", router);
+
+app.listen(4001, () => console.log("express server is running on port 4001"));

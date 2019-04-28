@@ -1,3 +1,4 @@
 /kaplan-ui/node_modules
 /kaplan-ui/dist
+/kaplan-ui/coverage
 /kaplan-nodejs/node_modules

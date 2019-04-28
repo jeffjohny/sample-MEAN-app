@@ -16,7 +16,6 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.courseService.getCourses().subscribe((course: Course) => {
       this.courses = groupBy(course, function(item) {
-        console.log('############')
         return new Date(item["time"]).setHours(0, 0, 0, 0);
       });
     });

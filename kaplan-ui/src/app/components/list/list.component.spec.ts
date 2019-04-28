@@ -22,7 +22,7 @@ describe("ListComponent", () => {
     fixture = TestBed.createComponent(ListComponent);
     component = fixture.componentInstance;
     testBedService = fixture.debugElement.injector.get(CourseService);
-    spyOn(testBedService, 'getCourses').and.callThrough();
+    spyOn(testBedService, "getCourses").and.callThrough();
     fixture.detectChanges();
   });
 
