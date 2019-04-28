@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-lg-1">
+    <img
+      src="{{course.subjectPhotoUrl}}"
+      class="sub-img"
+      alt="Logo of course"
+      width="45"
+      height="45"
+    />
+  </div>
+  <div class="col-lg-6">
+    <h2>{{ course.title }}</h2>
+    <p class="description">{{ course.description }}</p>
+  </div>
+  <div class="col-lg-5">
+    <div class="row">
+      <div class="col-sm-1">
+        <img
+          src="{{course.instructorPhotoUrl}}"
+          class="inst-img"
+          alt="Image of instructor"
+          width="35"
+          height="35"
+        />
+      </div>
+      <div class="col-sm-5">
+        <span class="inst-name">{{ course.instructorName }}</span>
+      </div>
+      <div class="col-lg-6 time-span">
+        <span
+          >{{ course.time | date: "h:mm aa" }} -
+          {{ getFinalHour(course.time) | date: "h:mm aa" }}
+          EDT</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

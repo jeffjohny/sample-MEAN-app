@@ -1,7 +1,3 @@
-@font-face {
-  font-family: "Facit";
-  src: url("../../../FacitRegular.otf");
-}
 main {
   font-family: "Facit";
   background-color: #f9f5f5;
@@ -9,39 +5,14 @@ main {
 .panel-list li {
   list-style-type: none;
 }
+.title-date {
+  padding-left: 40px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #666666;
+}
 .course-item {
   background-color: white;
   padding: 20px;
   border: #f9f0f0 2px solid;
-}
-.title-date {
-  padding-left: 40px;
-  font-size: 20px;
-}
-img.sub-img {
-  margin: 0px 0px 0px 10px;
-}
-h2 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 0px;
-}
-.inst-img {
-  border-radius: 50%;
-}
-.inst-name {
-  margin-left: 15px;
-}
-.inst-nam,
-.time-span,
-.title-date,
-.inst-name {
-  font-weight: bold;
-}
-.inst-nam,
-.time-span,
-.title-date,
-.inst-name,
-.description {
-  color: #666666;
 }

@@ -13,14 +13,10 @@ export class ListComponent implements OnInit {
 
   constructor(private courseService: CourseService) {}
 
-  getFinalHour(date: Date) {
-    let d = new Date(date);
-    return d.setHours(d.getHours() + 1);
-  }
-
   ngOnInit() {
     this.courseService.getCourses().subscribe((course: Course) => {
       this.courses = groupBy(course, function(item) {
+        console.log('############')
         return new Date(item["time"]).setHours(0, 0, 0, 0);
       });
     });

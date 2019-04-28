@@ -1,0 +1,25 @@
+img.sub-img {
+  margin: 0px 0px 0px 10px;
+}
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 0px;
+}
+.inst-img {
+  border-radius: 50%;
+}
+.inst-name {
+  margin-left: 15px;
+}
+.inst-nam,
+.time-span,
+.inst-name {
+  font-weight: bold;
+}
+.inst-nam,
+.time-span,
+.inst-name,
+.description {
+  color: #666666;
+}
